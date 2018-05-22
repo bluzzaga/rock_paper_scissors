@@ -1,5 +1,63 @@
 <!DOCTYPE html>
 <script>
 
+  game();
+
+  function computerPlay() {
+    let comArray = ['rock', 'paper', 'scissors'];
+    let rand = comArray[Math.floor(Math.random() * comArray.length)];
+    return rand;
+  }
+
+  function game() {
+    let playerScore = 0;
+    let comScore = 0;
+    let i, message;
+
+
+    for (i=0; i < 5; i++) {
+      let comSelection = computerPlay();
+      let playerSelection = prompt("Rock, Paper, or Scissors?");
+      playerSelection = playerSelection.toLowerCase();
+
+
+      if (comSelection == 'rock') {
+        if (playerSelection == 'scissors') {
+          comScore++;
+        } else if (playerSelection == 'paper') {
+          playerScore++;
+        }
+        console.log("Computer chose rock.");
+      }
+
+      else if (comSelection == 'paper') {
+        if (playerSelection == 'rock') {
+          comScore++;
+        } else if (playerSelection == 'scissors') {
+          playerScore++;
+        }
+        console.log("Computer chose paper.");
+      }
+
+      else if (comSelection == 'scissors') {
+        if (playerSelection == 'paper') {
+          comScore++;
+        } else if (playerSelection == 'rock') {
+          playerScore++;
+        }
+        console.log("Computer chose scissors.");
+      }
+    }
+
+    
+    if (playerScore > comScore) {
+      message = "Congratulations, you win!";
+    } else {
+      message = "Sorry, the computer wins :(";
+    }
+    console.log("Computer Score: " + comScore.toString());
+    console.log("Player Score: " + playerScore.toString());
+    console.log(message);
+  }
 
 </script>
